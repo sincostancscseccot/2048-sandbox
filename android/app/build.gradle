@@ -1,0 +1,59 @@
+plugins { id 'com.android.application' }
+
+def product = new groovy.json.JsonSlurper().parse(rootProject.file('../package.json'))
+def components = product.version.tokenize('.').collect { it as int }
+def releaseKey = System.getenv('SANDBOX_KEYSTORE')
+android {
+    namespace 'com.sandbox2048.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'com.sandbox2048.app'
+        minSdk 26
+        targetSdk 36
+        versionCode components[0] * 1000000 + components[1] * 1000 + components[2]
+        versionName product.version
+        testInstrumentationRunner 'com.sandbox2048.app.SmokeTestRunner'
+    }
+    buildFeatures { buildConfig true }
+    testBuildType project.findProperty('nativeTestBuildType') ?: 'debug'
+    signingConfigs {
+        release {
+            if (releaseKey) {
+                storeFile file(releaseKey)
+                storePassword System.getenv('SANDBOX_STORE_PASSWORD')
+                keyAlias '2048-sandbox'
+                keyPassword System.getenv('SANDBOX_STORE_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (releaseKey) signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    sourceSets.main.assets.srcDir layout.buildDirectory.dir('generated/webAssets')
+}
+tasks.register('syncWebAssets', Sync) {
+    from rootProject.file('../.work/android-web')
+    into layout.buildDirectory.dir('generated/webAssets')
+    doFirst {
+        def marker = rootProject.file('../.work/android-web/build-info.json')
+        if (!marker.exists() || new groovy.json.JsonSlurper().parse(marker).version != product.version) {
+            throw new GradleException('Build the matching web assets first: pnpm build:android')
+        }
+    }
+}
+tasks.register('writeNativeDependencyList') {
+    dependsOn 'syncWebAssets'
+    inputs.files(configurations.releaseRuntimeClasspath)
+    def report = layout.buildDirectory.file('generated/webAssets/android-dependencies.txt')
+    outputs.file(report)
+    doLast {
+        report.get().asFile.text = configurations.releaseRuntimeClasspath.resolvedConfiguration.resolvedArtifacts
+            .collect { it.moduleVersion.id.toString() }.unique().sort().join('\n') + '\n'
+    }
+}
+tasks.named('preBuild').configure { dependsOn 'writeNativeDependencyList' }
+dependencies { implementation 'androidx.webkit:webkit:1.15.0' }

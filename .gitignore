@@ -1,0 +1,33 @@
+# Web 工程选型后的常见产物
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+test-results/
+playwright-report/
+.sites-runtime/
+
+# 本地配置与临时工作
+.env
+.env.*
+!.env.example
+.work/
+.private/
+android/.gradle/
+android/local.properties
+android/**/build/
+*.keystore
+*.jks
+*.p12
+release/*.apk
+release/*.zip
+release/*.html
+*.log
+*.tmp
+~$*.docx
+
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+Desktop.ini

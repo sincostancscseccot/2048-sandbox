@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2048 Sandbox 页面线框</title>
+<style>
+:root{color-scheme:light;--paper:#f5f5f2;--panel:#fff;--ink:#242823;--muted:#666c65;--line:#d9ded5;--soft:#edf0e9;--accent:#355443;--accent-soft:#e5eee7;--warn:#8a5520;--warn-soft:#fbf2e4}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #739d80;outline-offset:3px}button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:7px;padding:9px 14px}button:hover:not(:disabled){background:var(--soft)}.primary{background:var(--accent);border-color:var(--accent);color:#fff}.primary:hover:not(:disabled){background:#294436}.ghost{background:transparent}input,select{border:1px solid #c6cdc2;border-radius:6px;padding:8px 10px;background:white;color:var(--ink);width:100%;min-width:0}input[type=checkbox]{width:18px;height:18px;vertical-align:middle;accent-color:var(--accent)}label{display:block}a{color:var(--accent)}code{font-family:Consolas,monospace}.prototype{padding:10px 22px;background:#e7ebe4;border-bottom:1px solid #cbd3c5;display:flex;gap:16px;justify-content:space-between;align-items:center}.prototype p{margin:0;color:#475044;font-size:12px}.prototype strong{font-weight:600}.prototype button{font-size:12px;padding:6px 10px;white-space:nowrap}.layout{display:grid;grid-template-columns:206px minmax(0,1fr);min-height:calc(100vh - 66px)}.sidebar{padding:25px 17px;background:var(--panel);border-right:1px solid var(--line)}.brand{font-size:20px;font-weight:650;letter-spacing:-.5px;margin:0 7px 3px}.brand-sub{color:var(--muted);font-size:12px;margin:0 7px 27px}.navigation{display:grid;gap:6px}.navigation button{text-align:left;border-color:transparent;padding:10px 13px}.navigation button[aria-current=page]{background:var(--accent-soft);color:var(--accent);font-weight:650}.sidebar-foot{margin:32px 7px 0;font-size:12px;color:var(--muted)}main{min-width:0;padding:28px 34px 45px;max-width:1400px;width:100%;margin:auto}.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:23px}h1{font-size:25px;line-height:1.3;margin:0 0 7px;font-weight:650;letter-spacing:-.4px}h2{font-size:18px;margin:0 0 14px;font-weight:600}h3{font-size:15px;margin:0 0 12px;font-weight:600}p{margin:0 0 12px}.muted{color:var(--muted)}.small{font-size:12px}.badge{font-size:12px;border:1px solid var(--line);border-radius:30px;padding:3px 9px;display:inline-block;white-space:nowrap}.badge.active{background:var(--accent-soft);border-color:#b8cbbd;color:var(--accent)}.badge.warn{background:var(--warn-soft);border-color:#dfc8aa;color:var(--warn)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:21px;min-width:0}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.game-grid{display:grid;grid-template-columns:minmax(0,1fr) 294px;gap:22px}.game-board-wrap{max-width:490px;margin:20px auto}.board{display:grid;gap:8px;padding:10px;background:#dedfd7;border:1px solid #c8ccbf;border-radius:10px;aspect-ratio:1}.cell{background:#eff0e9;display:flex;align-items:center;justify-content:center;border-radius:6px;min-width:0;font-size:27px;font-weight:600;aspect-ratio:1;overflow:hidden}.cell.filled{background:#fff8e9}.cell.v4{background:#eae8d5}.cell.v8{background:#d7e1d2}.cell.diff{box-shadow:inset 0 0 0 3px #ad753a}.compact-board{max-width:280px;margin:12px auto}.compact-board .board{gap:5px;padding:7px}.compact-board .cell{font-size:20px}.board-legend{text-align:center;color:var(--muted);font-size:12px;margin-top:10px}.stats{display:flex;flex-wrap:wrap;gap:25px;margin-top:15px;padding-bottom:16px;border-bottom:1px solid var(--line)}.stats label{font-size:12px;color:var(--muted)}.stat-value{font-size:26px;line-height:1.4;font-variant-numeric:tabular-nums}.notice{padding:12px 15px;border-radius:8px;background:var(--accent-soft);border:1px solid #cbdacd;margin-bottom:18px}.notice.warning{background:var(--warn-soft);border-color:#dfc8aa}.notice p:last-child{margin:0}.field{display:grid;gap:6px;margin-bottom:17px}.field small{color:var(--muted)}.fields2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.fields2 .field{margin:0}.field-error{color:#9a341a}.config-layout{display:grid;grid-template-columns:150px minmax(0,1fr) 270px;gap:17px}.categories{display:grid;gap:5px;align-content:start}.categories button{text-align:left;font-size:13px}.categories .chosen{background:var(--accent-soft);border-color:#b8cbbd;color:var(--accent)}.setting-footer{margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}.list{display:grid;gap:10px}.list-item{padding:12px 0;border-bottom:1px solid var(--line)}.list-item:last-child{border-bottom:0}.tree-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px}.tree-viewport{overflow:auto;max-height:610px;min-height:390px;max-width:100%;background:#fafbf8;border:1px solid var(--line);border-radius:8px}.tree-stage{position:relative}.tree-stage svg{position:absolute;inset:0;pointer-events:none}.tree-node{position:absolute;width:124px;height:73px;text-align:left;padding:7px 10px;font-size:12px;line-height:1.45;background:#fff}.tree-node code{font-weight:650}.tree-node span{display:block}.tree-node.selected{border:2px solid var(--accent);background:var(--accent-soft)}.tree-node.current::after{content:"活跃";position:absolute;right:5px;top:4px;font-size:10px;color:var(--accent)}.details{display:grid;gap:8px;margin:12px 0}.details div{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #edf0e9;padding-bottom:6px}.details dt{color:var(--muted)}.details dd{margin:0;text-align:right;overflow-wrap:anywhere}.metrics{width:100%;border-collapse:collapse;margin-top:17px;font-size:13px}.metrics th,.metrics td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}.metrics th{background:var(--soft);font-weight:600}.compare-board .board{max-width:350px;margin:auto}.empty-icon{width:50px;height:50px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;font-size:21px;background:var(--soft)}.home-hero{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:25px;margin-bottom:20px}.home-hero h2{font-size:24px;margin:10px 0}.home-hero .compact-board{margin:0}.actions{margin-top:15px}.toast{position:fixed;bottom:23px;left:50%;transform:translateX(-50%);background:#26392b;color:white;border:1px solid #435c49;border-radius:8px;padding:11px 18px;z-index:20;max-width:min(92vw,640px);box-shadow:0 4px 24px #0002}.toast[hidden]{display:none}dialog{width:min(490px,calc(100vw - 30px));border:1px solid var(--line);padding:25px;border-radius:12px;color:var(--ink)}dialog::backdrop{background:#14221a66}dialog h2{margin-top:0}dialog .row{justify-content:flex-end;margin-top:20px}.export-summary{background:var(--soft);padding:15px;border-radius:8px;margin:12px 0}.divider{border:0;border-top:1px solid var(--line);margin:20px 0}.phone-note{display:none}.skill-card{border:1px solid var(--line);padding:15px;border-radius:8px}.skill-card .row{margin-bottom:9px}.progress{height:5px;background:#e4e8df;border-radius:4px;margin:10px 0}.progress span{display:block;height:100%;background:#71947a;width:38%;border-radius:4px}.nav-icon{display:inline-block;width:25px;color:var(--muted)}
+@media(max-width:1100px){main{padding:25px 22px}.config-layout{grid-template-columns:125px minmax(0,1fr)}.config-preview{grid-column:1/-1;display:grid;grid-template-columns:240px minmax(0,1fr);align-items:center;gap:20px}.config-preview .compact-board{width:220px;margin:0}.tree-layout{grid-template-columns:minmax(0,1fr) 270px}.game-grid{grid-template-columns:minmax(0,1fr) 260px}}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.sidebar{padding:12px 17px;border-right:0;border-bottom:1px solid var(--line)}.brand{font-size:18px;margin:0 0 8px}.brand-sub,.sidebar-foot{display:none}.navigation{display:flex;overflow-x:auto;gap:6px}.navigation button{white-space:nowrap;font-size:13px;flex-shrink:0;padding:8px 12px}.nav-icon{display:none}main{padding:20px 17px 35px}.prototype{padding:9px 15px;align-items:flex-start}.prototype p{font-size:11px}.game-grid,.tree-layout{grid-template-columns:1fr}.game-grid>.panel:last-child{display:grid;grid-template-columns:1fr 1fr;gap:18px}.game-board-wrap{max-width:440px}.home-hero{grid-template-columns:minmax(0,1fr) 200px}.tree-viewport{min-height:330px}.topline{margin-bottom:17px}.config-layout{grid-template-columns:1fr}.categories{display:flex;overflow-x:auto;padding-bottom:5px}.categories button{white-space:nowrap}.config-preview{grid-column:auto}.grid2{grid-template-columns:1fr}.compare-board .board{max-width:310px}.phone-note{display:block}}
+@media(max-width:480px){h1{font-size:22px}.panel{padding:17px}.home-hero{grid-template-columns:1fr}.home-hero .compact-board{display:none}.game-grid>.panel:last-child{grid-template-columns:1fr}.config-preview{display:block}.config-preview .compact-board{width:auto;margin:12px auto;max-width:240px}.topline{flex-wrap:wrap}.cell{font-size:24px}.fields2{gap:10px}.prototype button{font-size:11px}.stats{gap:19px}.stat-value{font-size:23px}.metrics th,.metrics td{padding:8px 6px}.navigation{margin:0 -3px}.setting-footer .row button{flex:1}.row.actions button{flex:1;white-space:nowrap}}
+main{margin:0 auto;align-self:start}.sidebar,.navigation,.categories{min-width:0;max-width:100%}
+@media(max-width:820px){.layout,.config-layout,.game-grid,.tree-layout,.grid2{grid-template-columns:minmax(0,1fr)}.layout{grid-template-rows:auto minmax(0,1fr)}.sidebar{overflow:hidden}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="prototype"><p><strong>交互线框 v0.1</strong> · 示例数据，仅演示页面与操作关系，不写入真实存档。<br>可检查节点分数、分支重抽、技能撤销与配置校验。</p><button type="button" id="reset-demo">重置演示</button></div>
+<div class="layout" id="wireframe-app">
+  <aside class="sidebar"><div class="brand">2048 Sandbox</div><p class="brand-sub">规则沙盒 · 完整历史</p><nav class="navigation" aria-label="主导航" id="navigation"></nav><p class="sidebar-foot">离线优先<br>你的对局，由你保存。</p></aside>
+  <main id="screen" tabindex="-1"></main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="modal" aria-labelledby="modal-title"><form id="modal-form"><h2 id="modal-title"></h2><div id="modal-content"></div><div class="row"><button type="button" data-action="close-dialog">取消</button><button type="submit" class="primary" id="modal-submit">保存</button></div></form></dialog>
+<script>
+(() => {
+  'use strict';
+  const app = document.getElementById('wireframe-app');
+  const screen = document.getElementById('screen');
+  const nav = document.getElementById('navigation');
+  const dialog = document.getElementById('modal');
+  const toast = document.getElementById('toast');
+  const pages = [['home','首页','⌂'],['game','对局','▦'],['settings','规则配置','⚙'],['history','时间树','⑂'],['compare','节点对比','⇆'],['files','导入导出','↥'],['library','项目库','□']];
+  const categories = [['board','棋盘'],['numbers','数字'],['spawn','生成'],['movement','移动'],['merge','合并'],['skills','技能'],['events','事件'],['goals','胜负计分'],['system','系统展示']];
+  const zeros = values => values.concat(Array(16-values.length).fill(null));
+  const initial = () => [
+    {id:'S0',parent:null,values:zeros([2,2,4]),score:0,actions:0,rounds:0,charges:3,stack:[],rng:'基流 42/54',kind:'开局',mode:'custom'},
+    {id:'S1',parent:'S0',values:zeros([4,4]),score:4,actions:1,rounds:1,charges:3,stack:['S0'],rng:'基流 42/54',kind:'向左',mode:'custom'},
+    {id:'S2',parent:'S1',values:zeros([8]),score:12,actions:2,rounds:2,charges:3,stack:['S0','S1'],rng:'基流 42/54',kind:'向左',mode:'custom'},
+    {id:'S2-copy',parent:'S1',values:zeros([8]),score:12,actions:2,rounds:2,charges:3,stack:['S0','S1'],rng:'基流 42/54',kind:'复现',mode:'custom'},
+    {id:'S3',parent:'S1',values:zeros([8]),score:12,actions:2,rounds:2,charges:3,stack:['S0','S1'],rng:'新流 43/55',kind:'重抽',mode:'custom'},
+    {id:'U1',parent:'S2',target:'S1',values:zeros([4,4]),score:4,actions:3,rounds:1,charges:2,stack:['S0'],rng:'基流 42/54',kind:'撤销',mode:'custom'},
+    {id:'U2',parent:'U1',target:'S0',values:zeros([2,2,4]),score:0,actions:4,rounds:0,charges:1,stack:[],rng:'基流 42/54',kind:'撤销',mode:'custom'}
+  ].map(n => ({...n,rows:4,cols:4,spawnCount:0}));
+  let nodes, state, timer, lastFocus, modalKind;
+  const escaped = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const node = id => nodes.find(n => n.id === id);
+  const current = () => node(state.active);
+  const configDefault = () => ({rows:4,cols:4,count:1,initialCount:2,weight2:9,weight4:1,undoEnabled:true,unlimited:false,charges:3,target:'2048',continueAfterWin:true});
+  function reset() { nodes=initial(); state={page:'home',active:'S2',selected:'S1',armed:null,policy:'reroll',category:'board',config:configDefault(),compareA:'S2',compareB:'U1',checkpoints:[],library:[],scope:'project',includeArchived:true,importPreview:null,serial:0}; render(); }
+  function say(text) { clearTimeout(timer); toast.textContent=text; toast.hidden=false; timer=setTimeout(()=>{toast.hidden=true;},5500); }
+  function go(page) { state.page=page; render(); }
+  function heading(title,subtitle,extra='') { return `<div class="topline"><div><h1>${title}</h1><p class="muted">${subtitle}</p></div>${extra}</div>`; }
+  function board(n,other=null,compact=false) {
+    const cells=n.values.map((v,i)=>`<div class="cell ${v!==null?'filled v'+v:''} ${other&&v!==(other.values[i]??null)?'diff':''}" aria-label="第${Math.floor(i/n.cols)+1}行第${i%n.cols+1}列 ${v===null?'空格':v}">${v===null?'':v}</div>`).join('');
+    return `<div class="${compact?'compact-board':''}"><div class="board" style="grid-template-columns:repeat(${n.cols},minmax(0,1fr));aspect-ratio:${n.cols}/${n.rows}">${cells}</div></div>`;
+  }
+  const stats=n=>`<div class="stats"><div><label>节点分数</label><div class="stat-value" data-testid="score">${n.score}</div></div><div><label>有效操作</label><div class="stat-value" data-testid="action-count">${n.actions}</div></div><div><label>规则回合</label><div class="stat-value">${n.rounds}</div></div></div>`;
+  const policy=()=>`<label class="field small">重新操作时的随机策略<select data-field="policy" aria-label="重新操作时的随机策略"><option value="reroll" ${state.policy==='reroll'?'selected':''}>默认重抽</option><option value="reproduce" ${state.policy==='reproduce'?'selected':''}>复现随机结果</option></select></label>`;
+  const numberField=(key,label,value,min=0,max=10000)=>`<label class="field">${label}<input type="number" data-config="${key}" value="${value}" min="${min}" max="${max}" step="1"></label>`;
+  function home() {
+    const n=current();
+    return heading('你的数字实验室','从一个局面出发，保留每一种尝试。',`<span class="badge active">离线 Web 方向</span>`)+
+      `<section class="panel home-hero"><div><span class="badge">最近对局 · 基础沙盒</span><h2>分支与撤销示例</h2><p class="muted">活跃节点 ${escaped(n.id)} · ${n.actions} 次有效操作</p>${stats(n)}<div class="row actions"><button class="primary" data-page="game">继续对局</button><button data-page="history">查看时间树</button></div></div>${board(n,null,true)}</section>`+
+      `<div class="grid2"><section class="panel"><h2>从规则开始</h2><p class="muted">保留经典玩法，也可以调整棋盘、生成与技能。</p><div class="row actions"><button data-action="start-normal">正常模式</button><button data-page="settings">自定义配置</button></div></section><section class="panel"><h2>把对局带走</h2><p class="muted">保存整个项目和历史，或备份你的项目库。</p><div class="row actions"><button data-page="files">导入导出</button><button data-page="library">项目库</button></div></section></div>`;
+  }
+  function canMove(n) { return n.cols>=2 && ((n.values[0]===2&&n.values[1]===2)||(n.values[0]===4&&n.values[1]===4)); }
+  function game() {
+    const n=node(state.armed||state.active);
+    return heading('对局',`节点 ${escaped(n.id)} · ${n.mode==='normal'?'经典规则 v1':'自定义规则 v1'}`,`<span class="badge active">示例已载入</span>`)+
+      (state.armed?`<div class="notice"><div class="row between"><span>将从 <strong>${escaped(n.id)}</strong> 继续；下一步成功后创建新分支。</span><button data-action="return-active">返回活跃节点</button></div></div>`:'')+
+      `<div class="game-grid"><section class="panel">${stats(n)}<div class="game-board-wrap">${board(n)}<p class="board-legend">当前示例：向左合并 · 每个新块单步只合并一次</p></div><div class="row between"><button class="primary" data-action="demo-move" ${canMove(n)?'':'disabled'}>示例向左 ←</button><div class="row"><button data-action="checkpoint">保存检查点</button><button data-page="history">时间树</button></div></div>${!canMove(n)?'<p class="small muted" style="margin-top:12px">此预置局面没有下一步向左示例；可以从 S1 继续，或使用撤销。</p>':''}</section>
+      <aside class="panel"><section><h2>目标与规则</h2><p>达到 <strong>${escaped(n.goal||'2048')}</strong> 后${n.continueAfterWin===false?'结算胜利':'可继续'}</p><p class="small muted">当前最大数字 ${Math.max(...n.values.filter(v=>v!==null),0)}</p><p class="small muted">${n.spawnCount===0?'这组预置示例关闭回合生成；重抽仍记录新的随机上下文。':'新局示例包含一次预设的生成反馈。'}</p><hr class="divider">${policy()}<dl class="details"><div><dt>随机上下文</dt><dd>${escaped(n.rng)}</dd></div><div><dt>模式</dt><dd>${n.mode==='normal'?'正常':'自定义'}</dd></div></dl></section><section><h2>技能</h2>${n.mode==='normal'||n.undoEnabled===false?'<p class="muted">当前规则未启用技能。</p>':`<div class="skill-card"><div class="row between"><strong>撤销</strong><span class="badge" data-testid="undo-charges">余量 ${n.charges===null?'∞':n.charges}</span></div><p class="small muted">恢复世界进度，保留当前技能消耗；有效操作数仍增加。</p><button data-action="demo-undo" ${n.stack.length===0||n.charges===0?'disabled':''}>使用撤销</button></div>`}<div class="row actions"><button data-page="files">保存与导出</button></div></section></aside></div>`;
+  }
+  function configError() {
+    const c=state.config;
+    if (![c.rows,c.cols].every(v=>Number.isInteger(v)&&v>=1&&v<=64)||c.rows*c.cols>4096) return '棋盘行列需为 1–64 的整数，总格数不超过示例预算 4096。';
+    if (![c.count,c.initialCount,c.weight2,c.weight4,c.charges].every(v=>Number.isSafeInteger(v)&&v>=0)) return '生成数量、权重与技能次数必须为非负整数。';
+    if (c.count>0&&c.weight2+c.weight4===0) return '需要抽取数字时，总权重必须大于 0。';
+    if (!/^(0|[1-9][0-9]*)$/.test(c.target)||c.target.length>256) return '目标数字需为 256 位以内的非负精确整数。';
+    return '';
+  }
+  function configFields() {
+    const c=state.config;
+    switch(state.category) {
+      case 'board': return '<h2>棋盘</h2><p class="muted">行列分别设置；非正方形和单行玩法都允许。</p><div class="fields2">'+numberField('rows','行数',c.rows,1,64)+numberField('cols','列数',c.cols,1,64)+'</div><hr class="divider">'+numberField('initialCount','开局数字数量',c.initialCount,0,4096)+'<p class="small muted">初始布局、特殊格与区域在高级编辑中逐步开放。</p>';
+      case 'numbers': return '<h2>数字</h2><label class="field">目标数字<input type="text" inputmode="numeric" maxlength="256" data-config="target" value="'+escaped(c.target)+'"></label><p class="muted">精确整数与空格独立；负数和分数留待后续扩展。</p><span class="badge">初始数列：2 的幂</span>';
+      case 'spawn': return '<h2>生成</h2>'+numberField('count','每次生成数量',c.count,0,4096)+'<div class="fields2">'+numberField('weight2','数字 2 权重',c.weight2,0,1000000)+numberField('weight4','数字 4 权重',c.weight4,0,1000000)+'</div><p class="small muted" style="margin-top:14px">权重比例会自动换算为百分比；生成数量可以为 0。</p>';
+      case 'skills': return `<h2>技能</h2><label class="field"><span><input type="checkbox" data-config="undoEnabled" ${c.undoEnabled?'checked':''}> 启用撤销</span></label><label class="field"><span><input type="checkbox" data-config="unlimited" ${c.unlimited?'checked':''} ${c.undoEnabled?'':'disabled'}> 无限使用</span></label><label class="field">初始次数<input type="number" min="0" step="1" data-config="charges" value="${c.charges}" ${!c.undoEnabled||c.unlimited?'disabled':''}></label><p class="small muted">无限只取消次数限制。撤销与其他成功技能都计入有效操作。</p><span class="badge">删除 · 交换 · 升降级等独立配置</span>`;
+      case 'movement': return '<h2>移动</h2><p>上下左右 · 滑到底</p><p class="muted">无效方向输入默认忽略，不生成数字也不计操作。</p><span class="badge">斜向与环绕为实验扩展</span>';
+      case 'merge': return '<h2>合并</h2><p>相同数字求和，每个新块单步最多合并一次。</p><div class="notice">2 2 2 2 → 4 4 空 空<br>4 4 8 空 → 8 8 空 空</div><p class="muted">映射合并与连锁在高级规则中配置。</p>';
+      case 'events': return '<h2>事件</h2><p>触发 → 条件 → 动作</p><div class="notice"><strong>规则示例</strong><p>最大数字首次达到 512，且空格少于 4 时，删除一个非最大数字；每局最多 3 次。</p></div><span class="badge warn">M4–M5 逐步开放</span>';
+      case 'goals': return `<h2>胜负与计分</h2><label class="field">目标数字<input type="text" inputmode="numeric" maxlength="256" data-config="target" value="${escaped(c.target)}"></label><label class="field"><span><input type="checkbox" data-config="continueAfterWin" ${c.continueAfterWin?'checked':''}> 获胜后继续</span></label><p class="muted">经典计分按合并新值累加；无尽、多目标和回合限制分别配置。</p>`;
+      default: return '<h2>系统与展示</h2>'+policy()+'<p class="muted">随机分支策略属于项目偏好，不改变经典规则身份。恢复计时对局后默认暂停。</p><span class="badge">主题跟随系统 · 支持减弱动画</span>';
+    }
+  }
+  function settings() {
+    const c=state.config, total=c.weight2+c.weight4, error=configError();
+    const rows=Math.min(8,Math.max(1,c.rows||1)),cols=Math.min(8,Math.max(1,c.cols||1));
+    const preview={rows,cols,values:Array(rows*cols).fill(null)};for(let i=0;i<Math.min(c.initialCount,preview.values.length);i++)preview.values[i]=i===1?4:2;
+    return heading('自定义规则','基础参数先可见，高级能力按模块展开。',`<span class="badge">未保存草稿</span>`)+
+      `<div class="config-layout"><nav class="categories" aria-label="规则分类">${categories.map(([id,label])=>`<button data-category="${id}" class="${state.category===id?'chosen':''}" aria-pressed="${state.category===id}">${label}</button>`).join('')}</nav><section class="panel">${configFields()}<div id="config-error" class="notice warning" role="status" ${error?'':'hidden'}>${escaped(error)}</div><div class="setting-footer"><div class="row"><button data-action="validate-config">校验配置</button><button data-action="save-config">保存配置</button><button class="primary" data-action="start-custom" ${error?'disabled':''}>开始示例新局</button></div></div></section><aside class="panel config-preview"><div><h2>独立预览</h2>${board(preview,null,true)}</div><div><dl class="details"><div><dt>棋盘</dt><dd>${c.rows} × ${c.cols}</dd></div><div><dt>生成 2</dt><dd>${total?Math.round(c.weight2/total*1000)/10:0}%</dd></div><div><dt>生成 4</dt><dd>${total?Math.round(c.weight4/total*1000)/10:0}%</dd></div><div><dt>每步生成</dt><dd>${c.count}</dd></div></dl><p class="small muted">预览不写入正式历史。大棋盘在这里展示最多 8×8 的缩略区域。</p></div></aside></div>`;
+  }
+  function treeMarkup() {
+    const placed=[], step=94;let leaf=0;
+    const place=(id,depth)=>{const children=nodes.filter(n=>n.parent===id);const ys=children.map(c=>place(c.id,depth+1));const y=ys.length?ys.reduce((a,b)=>a+b,0)/ys.length:30+leaf++*step;placed.push({id,x:18+depth*157,y});return y;};
+    nodes.filter(n=>n.parent===null).forEach(n=>place(n.id,0));
+    const width=Math.max(510,...placed.map(p=>p.x+150)),height=Math.max(360,leaf*step+65);
+    const paths=placed.filter(p=>node(p.id).parent).map(p=>{const parent=placed.find(x=>x.id===node(p.id).parent);return `<path d="M ${parent.x+124} ${parent.y+36} C ${parent.x+143} ${parent.y+36},${p.x-20} ${p.y+36},${p.x} ${p.y+36}" fill="none" stroke="#b5bdb0" stroke-width="1.5"/>`;}).join('');
+    return `<div class="tree-viewport" aria-label="可滚动历史树"><div class="tree-stage" style="width:${width}px;height:${height}px"><svg width="${width}" height="${height}" aria-hidden="true">${paths}</svg>${placed.map(p=>{const n=node(p.id);return `<button class="tree-node ${state.selected===n.id?'selected':''} ${state.active===n.id?'current':''}" style="left:${p.x}px;top:${p.y}px" data-node="${escaped(n.id)}" aria-label="节点 ${escaped(n.id)} 分数 ${n.score}" aria-pressed="${state.selected===n.id}"><code>${escaped(n.id)}</code><span>分数 ${n.score} · ${escaped(n.kind)}</span><span>有效操作 ${n.actions}</span></button>`;}).join('')}</div></div>`;
+  }
+  function history() {
+    const n=node(state.selected);
+    return heading('时间树','选中只预览；从此继续后，下一次操作创建新分支。',`<span class="badge">${nodes.length} 个节点 · 原路径保留</span>`)+
+      `<div class="tree-layout"><section class="panel"><div class="row between" style="margin-bottom:15px"><h2 style="margin:0">分支与撤销示例</h2><span class="small muted">活跃 ${escaped(state.active)} / 预览 ${escaped(n.id)}</span></div>${treeMarkup()}<p class="small muted" style="margin-top:12px">S2 和 S2-copy 保留独立节点。撤销节点另行显示恢复目标，不改父子路径。</p></section><aside class="panel"><div class="row between"><h2 style="margin:0">节点 ${escaped(n.id)}</h2><span class="badge ${n.id===state.active?'active':''}">${n.id===state.active?'活跃':'预览'}</span></div>${board(n,null,true)}<dl class="details"><div><dt>节点分数</dt><dd data-testid="preview-score">${n.score}</dd></div><div><dt>有效操作 / 回合</dt><dd>${n.actions} / ${n.rounds}</dd></div><div><dt>父节点</dt><dd>${escaped(n.parent||'根节点')}</dd></div>${n.target?`<div><dt>撤销恢复目标</dt><dd>${escaped(n.target)}</dd></div>`:''}<div><dt>撤销余量</dt><dd>${n.charges===null?'∞':n.charges}</dd></div><div><dt>随机上下文</dt><dd>${escaped(n.rng)}</dd></div></dl>${policy()}<button class="primary" data-action="continue-node">从此继续</button><div class="row actions"><button data-action="compare-selected">与活跃节点比较</button><button data-action="checkpoint-selected">保存检查点</button></div></aside></div>`;
+  }
+  function compare() {
+    const a=node(state.compareA),b=node(state.compareB),options=selected=>nodes.map(n=>`<option value="${escaped(n.id)}" ${n.id===selected?'selected':''}>${escaped(n.id)} · 分数 ${n.score}</option>`).join('');
+    return heading('节点对比','分数、操作数和资源分别比较；不把不同路径的成绩写回父节点。')+
+      `<div class="grid2"><section class="panel compare-board"><label class="field">节点 A<select data-field="compareA">${options(a.id)}</select></label>${board(a,b)}</section><section class="panel compare-board"><label class="field">节点 B<select data-field="compareB">${options(b.id)}</select></label>${board(b,a)}</section></div><section class="panel" style="margin-top:18px"><h2>状态差异</h2><p class="small muted">棋盘内边框标记不同位置；空格与数字 0 独立。</p><table class="metrics"><thead><tr><th>字段</th><th>${escaped(a.id)}</th><th>${escaped(b.id)}</th></tr></thead><tbody>${[['节点分数',a.score,b.score],['有效操作',a.actions,b.actions],['规则回合',a.rounds,b.rounds],['撤销余量',a.charges??'∞',b.charges??'∞'],['父节点',a.parent||'根',b.parent||'根'],['随机上下文',a.rng,b.rng]].map(([l,x,y])=>`<tr><td>${l}</td><td>${escaped(x)}</td><td>${escaped(y)}</td></tr>`).join('')}</tbody></table></section>`;
+  }
+  function files() {
+    const preview=state.importPreview;
+    return heading('保存与文件交换','先明确保存范围，再预览导出或导入副本。')+
+      `<div class="grid2"><section class="panel"><h2>导出</h2><label class="field">导出范围<select data-field="scope"><option value="node" ${state.scope==='node'?'selected':''}>当前节点与恢复依赖</option><option value="branch" ${state.scope==='branch'?'selected':''}>当前分支路径</option><option value="project" ${state.scope==='project'?'selected':''}>整个项目与全部历史</option><option value="library" ${state.scope==='library'?'selected':''}>项目库完整备份</option></select></label><label class="field"><span><input type="checkbox" data-field="includeArchived" ${state.includeArchived?'checked':''}> 包含归档分支</span></label><div class="export-summary"><strong>${state.scope==='library'?'项目库备份':state.scope==='project'?'完整项目':'局部导出'}</strong><p class="small" style="margin:6px 0 0">完整状态 · 规则版本 · 历史关系 · 必要恢复依赖<br>默认无损压缩与快照去重</p></div><button class="primary" data-action="export-preview">预览导出内容</button></section><section class="panel"><h2>导入</h2><label class="field">选择演示用 JSON 样例<input type="file" id="import-file" accept=".json,application/json"></label><p class="small muted">可选择项目中的 examples/contracts/history-and-undo.json。这里只演示预览和副本入口。</p>${preview?`<div class="notice"><strong>${escaped(preview.name)}</strong><p>${preview.nodes} 个节点 · ${preview.states} 份状态</p><span class="badge">预览完成 · 未写入项目库</span></div><button class="primary" data-action="import-copy">导入为副本（演示）</button>`:'<div class="export-summary muted">选择文件后展示范围、版本、能力与完整性信息。</div>'}</section></div><div class="notice" style="margin-top:18px">恢复计时对局后默认暂停，等待玩家明确继续。</div>`;
+  }
+  function library() {
+    return heading('对局项目库','项目与整棵历史一起管理。',`<button data-action="backup-library">备份项目库</button>`)+
+      `<section class="panel"><div class="list"><div class="list-item"><div class="row between"><div><h3>分支与撤销示例</h3><p class="small muted">${nodes.length} 个节点 · 活跃 ${escaped(state.active)} · 分数 ${current().score}</p></div><button data-page="game">继续对局</button></div></div>${state.library.map(p=>`<div class="list-item"><div class="row between"><div><h3>${escaped(p.name)}</h3><p class="small muted">${p.nodes} 个节点 · 演示副本</p></div><span class="badge">仅演示会话</span></div></div>`).join('')}</div></section><section class="panel" style="margin-top:18px"><h2>检查点</h2>${state.checkpoints.length?state.checkpoints.map(c=>`<div class="list-item row between"><span>${escaped(c.name)} · ${escaped(c.nodeId)}</span><button data-checkpoint="${escaped(c.nodeId)}">查看节点</button></div>`).join(''):'<p class="muted">还没有命名检查点。可以在游戏页或节点详情保存。</p>'}</section>`;
+  }
+  function render() {
+    nav.innerHTML=pages.map(([id,label,icon])=>`<button type="button" data-page="${id}" ${state.page===id?'aria-current="page"':''}><span class="nav-icon">${icon}</span>${label}</button>`).join('');
+    screen.innerHTML=({home,game,settings,history,compare,files,library}[state.page])();
+  }
+  function newNode(data) { const id='C'+(++state.serial);const n={...data,id};nodes.push(n);state.active=id;state.selected=id;state.armed=null;return n; }
+  function demoMove() {
+    const parent=node(state.armed||state.active);if(!canMove(parent))return;
+    const values=parent.values.slice();const pair=values[0];values[0]=pair*2;values[1]=null;
+    if(parent.values[2]===4&&pair===2){values[1]=4;values[2]=null;}
+    if(parent.spawnCount>0){const at=values.findLastIndex(v=>v===null);if(at>=0)values[at]=2;}
+    const branching=state.armed!==null;
+    const n=newNode({...parent,parent:parent.id,target:undefined,values,score:parent.score+pair*2,actions:parent.actions+1,rounds:parent.rounds+1,stack:[...parent.stack,parent.id],rng:branching&&state.policy==='reroll'?'新流 C'+(state.serial+1):parent.rng,kind:branching?(state.policy==='reroll'?'重抽向左':'复现向左'):'向左'});
+    render();say(`示例：已创建 ${n.id}，父为 ${parent.id}；原有 ${nodes.length-1} 个节点保留。`);
+  }
+  function demoUndo() {
+    const parent=node(state.armed||state.active);if(parent.mode==='normal'||!parent.stack.length||parent.charges===0)return;
+    const target=node(parent.stack.at(-1));
+    const n=newNode({...parent,parent:parent.id,target:target.id,values:target.values.slice(),score:target.score,rounds:target.rounds,actions:parent.actions+1,charges:parent.charges===null?null:parent.charges-1,stack:parent.stack.slice(0,-1),kind:'撤销'});
+    render();say(`示例：${n.id} 恢复 ${target.id} 的世界进度，父仍为 ${parent.id}；有效操作 ${n.actions}，撤销余量 ${n.charges??'∞'}。`);
+  }
+  function openModal(kind,title,content,submit='保存') { modalKind=kind;lastFocus=document.activeElement;document.getElementById('modal-title').textContent=title;document.getElementById('modal-content').innerHTML=content;document.getElementById('modal-submit').textContent=submit;dialog.showModal();dialog.querySelector('input,button')?.focus(); }
+  function checkpoint(id) { state.checkpointTarget=id;openModal('checkpoint','保存检查点',`<label class="field">检查点名称<input id="checkpoint-name" maxlength="60" required value="节点 ${escaped(id)} 的尝试"></label><p class="small muted">目标 ${escaped(id)}；命名不增加游戏操作数。</p>`); }
+  const actions={
+    'demo-move':demoMove,'demo-undo':demoUndo,'return-active':()=>{state.armed=null;render();},
+    'continue-node':()=>{state.armed=state.selected;go('game');},
+    'compare-selected':()=>{state.compareA=state.selected;state.compareB=state.active;go('compare');},
+    'checkpoint':()=>checkpoint(state.armed||state.active),'checkpoint-selected':()=>checkpoint(state.selected),
+    'validate-config':()=>say(configError()||'示例配置校验通过。零生成和无限次数均可表达。'),
+    'save-config':()=>say(configError()||'线框演示：配置草稿可保存；尚未写入真实规则库。'),
+    'start-normal':()=>start(false),'start-custom':()=>start(true),
+    'backup-library':()=>{state.scope='library';go('files');},
+    'export-preview':()=>{const labels={node:'当前节点与依赖',branch:'当前分支路径',project:'整个项目',library:'项目库备份'};openModal('export','导出范围预览',`<div class="export-summary"><strong>${labels[state.scope]}</strong><p>示例项目共 ${nodes.length} 个节点，活跃节点 ${escaped(state.active)}。${state.includeArchived?'包含':'不含非依赖的'}归档分支。</p><p class="small">保留规则、完整状态、技能和随机记录；必要恢复依赖始终附带。</p></div><p class="small muted">线框仅预览范围，不生成真实存档文件。</p>`,'完成预览');},
+    'import-copy':()=>{if(!state.importPreview)return;state.library.push({...state.importPreview,name:state.importPreview.name+' 副本'});go('library');say('示例副本已加入本次演示会话；不覆盖已有项目。');},
+    'close-dialog':()=>dialog.close()
+  };
+  function start(custom) {
+    if(custom&&configError()){say(configError());return;}
+    const c=custom?state.config:{rows:4,cols:4,count:1,initialCount:2,charges:0,unlimited:false,undoEnabled:false};
+    const values=Array(c.rows*c.cols).fill(null);for(let i=0;i<Math.min(c.initialCount,values.length);i++)values[i]=2;
+    const n=newNode({parent:null,rows:c.rows,cols:c.cols,values,score:0,actions:0,rounds:0,charges:custom&&c.undoEnabled?(c.unlimited?null:c.charges):0,stack:[],rng:'新局示例流',kind:'开局',mode:custom?'custom':'normal',spawnCount:c.count,goal:custom?c.target:'2048',continueAfterWin:custom?c.continueAfterWin:true,undoEnabled:custom&&c.undoEnabled});
+    state.selected=n.id;go('game');say('已进入新局线框；方向按钮演示预置的向左合并流程。');
+  }
+  function handleClick(event) {
+    const button=event.target.closest('button');if(!button||button.disabled)return;
+    if(button.dataset.page){go(button.dataset.page);return;}
+    if(button.dataset.node){state.selected=button.dataset.node;render();return;}
+    if(button.dataset.category){state.category=button.dataset.category;render();return;}
+    if(button.dataset.checkpoint){state.selected=button.dataset.checkpoint;go('history');return;}
+    actions[button.dataset.action]?.();
+  }
+  app.addEventListener('click',handleClick);dialog.addEventListener('click',handleClick);
+  app.addEventListener('change',event=>{
+    const input=event.target;
+    if(input.dataset.config){const key=input.dataset.config;state.config[key]=input.type==='checkbox'?input.checked:key==='target'?input.value:Number(input.value);render();return;}
+    if(input.dataset.field){state[input.dataset.field]=input.type==='checkbox'?input.checked:input.value;render();return;}
+    if(input.id==='import-file')previewImport(input.files?.[0]);
+  });
+  async function previewImport(file) {
+    if(!file)return;
+    if(file.size>2*1024*1024){say('演示预览只接受 2 MiB 以内的 JSON 样例。');return;}
+    try{const data=JSON.parse(await file.text());if(data.kind!=='contract-example'||!Array.isArray(data.nodes)||!Array.isArray(data.states))throw new Error('不是契约样例');state.importPreview={name:String(data.project?.name||file.name).slice(0,100),nodes:data.nodes.length,states:data.states.length};render();say('示例元数据已载入。完整摘要与结构校验由后续真实导入流程执行。');}catch{state.importPreview=null;render();say('无法预览：请选择有效的契约 JSON 样例。');}
+  }
+  document.getElementById('modal-form').addEventListener('submit',event=>{event.preventDefault();if(modalKind==='checkpoint'){const name=document.getElementById('checkpoint-name').value.trim();if(!name)return;state.checkpoints.push({name,nodeId:state.checkpointTarget});say('示例检查点已命名；有效操作数保持不变。');}dialog.close();render();});
+  dialog.addEventListener('close',()=>{const restored=lastFocus?.isConnected?lastFocus:app.querySelector('button[data-action="'+(lastFocus?.dataset?.action||'')+'"]');(restored||screen).focus();});
+  document.getElementById('reset-demo').addEventListener('click',()=>{reset();say('演示已重置。');});
+  reset();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "kind": "random-reference-vector",
+  "algorithm": "pcg32-xsh-rr-v1",
+  "initState": "42",
+  "initSequence": "54",
+  "seededState": {
+    "algorithm": "pcg32-xsh-rr-v1",
+    "state": "1753877967969059832",
+    "increment": "109",
+    "drawCount": 0
+  },
+  "expectedHex": [
+    "a15c02b7",
+    "7b47f409",
+    "ba1d3330",
+    "83d2f293",
+    "bfa4784b",
+    "cbed606e"
+  ],
+  "reference": "https://www.pcg-random.org/using-pcg-c-basic.html"
+}

@@ -1,0 +1,20 @@
+{
+  "browser": "155.0.8059.40",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "fixture": "1001-node chain; actual Chrome IndexedDB",
+  "measurements": {
+    "checkAndPrepareMs": 4405.74,
+    "importAndOpenMs": 2802.22,
+    "openTreeMs": 399.54,
+    "saveAndConfirmMs": 1481.34,
+    "reloadMs": 1816.87,
+    "exportMs": 3021.29
+  },
+  "renderedTreeNodes": 5,
+  "archiveBytes": 1517463,
+  "completeBackupNodes": 2004,
+  "errors": []
+}

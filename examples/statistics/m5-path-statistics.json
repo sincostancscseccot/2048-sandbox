@@ -1,0 +1,88 @@
+{
+  "format": "2048-sandbox-path-statistics",
+  "formatVersion": 1,
+  "projectId": "match-4667429b-6369-4fe7-813d-90536a2971c7",
+  "exportedAt": "2026-10-14T12:55:55.053Z",
+  "endId": "node-e5957c5e-f7be-4303-a498-d7f2da4938f8",
+  "rows": [
+    {
+      "nodeId": "node-f13e72ae-3c08-4c7d-870f-8944af446eb3",
+      "depth": 0,
+      "action": "起点",
+      "actionType": "root",
+      "score": "0",
+      "scoreDelta": "0",
+      "round": 0,
+      "effectiveActions": 0,
+      "ruleRef": {
+        "id": "rules-4abd0b0b-861c-4683-aebb-b0e52b0c7fc1",
+        "version": 1
+      },
+      "stateHash": "sha256:9a6d8aa3ca200a2ddc3fa6f803932756a16b6e08e6249636d3e6536aa534181a"
+    },
+    {
+      "nodeId": "node-ed857878-9ca2-4579-9926-b79ad8f894cc",
+      "depth": 1,
+      "action": "←",
+      "actionType": "move",
+      "score": "4",
+      "scoreDelta": "4",
+      "round": 1,
+      "effectiveActions": 1,
+      "ruleRef": {
+        "id": "rules-4abd0b0b-861c-4683-aebb-b0e52b0c7fc1",
+        "version": 1
+      },
+      "stateHash": "sha256:d5c09938c81f6ed261482f48bf646de13710699e7e950b33c4a07082e479aa58"
+    },
+    {
+      "nodeId": "node-2fcdcaaf-1810-4e22-85d3-609cf609edcd",
+      "depth": 2,
+      "action": "←",
+      "actionType": "move",
+      "score": "12",
+      "scoreDelta": "8",
+      "round": 2,
+      "effectiveActions": 2,
+      "ruleRef": {
+        "id": "rules-4abd0b0b-861c-4683-aebb-b0e52b0c7fc1",
+        "version": 1
+      },
+      "stateHash": "sha256:d587bc372deaf859a73d84ed3562c444d66f700360f364934543bf783aef9339"
+    },
+    {
+      "nodeId": "node-e5957c5e-f7be-4303-a498-d7f2da4938f8",
+      "depth": 3,
+      "action": "撤销",
+      "actionType": "skill",
+      "score": "4",
+      "scoreDelta": "-8",
+      "round": 1,
+      "effectiveActions": 3,
+      "ruleRef": {
+        "id": "rules-4abd0b0b-861c-4683-aebb-b0e52b0c7fc1",
+        "version": 1
+      },
+      "stateHash": "sha256:c02f8e7f141e6622970339ff1261f89ff17b7209af22aaa6e2cb0d0c8219704d"
+    }
+  ],
+  "actions": {
+    "move": 2,
+    "skill": 1,
+    "edit": 0,
+    "rule-edit": 0
+  },
+  "skills": {
+    "undo": 1
+  },
+  "highestScore": "12",
+  "largestTile": "8",
+  "positiveScoreChange": "12",
+  "mergeOperations": 2,
+  "ruleVersions": 1,
+  "rerolls": 0,
+  "reproductions": 0,
+  "pathCheckpoints": 0,
+  "totalNodes": 4,
+  "forkPoints": 0
+}

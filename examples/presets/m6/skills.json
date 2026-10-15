@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "id": "preset-skills",
+  "version": 1,
+  "name": "技能练习场",
+  "requiredCapabilities": [
+    "core-v1",
+    "sandbox-v1",
+    "editing-v1",
+    "skills-v1"
+  ],
+  "definition": {
+    "mode": "custom",
+    "board": {
+      "rows": 4,
+      "cols": 4,
+      "initialLayout": [
+        {
+          "index": 0,
+          "value": "2"
+        },
+        {
+          "index": 1,
+          "value": "4"
+        },
+        {
+          "index": 5,
+          "value": "8"
+        }
+      ],
+      "cells": [],
+      "regions": [],
+      "resizeAnchor": "top-left",
+      "overflowPolicy": "cancel"
+    },
+    "numbers": {
+      "maxDigits": 256,
+      "allowedValues": null,
+      "sequence": "powers-of-two",
+      "customSequence": [],
+      "specialTypes": []
+    },
+    "spawn": {
+      "initialCount": 3,
+      "initialWeights": [
+        {
+          "value": "2",
+          "weight": 9
+        },
+        {
+          "value": "4",
+          "weight": 1
+        }
+      ],
+      "perActionCount": 0,
+      "weights": [
+        {
+          "value": "2",
+          "weight": 9
+        },
+        {
+          "value": "4",
+          "weight": 1
+        }
+      ],
+      "triggerOn": [
+        "move"
+      ],
+      "emptyStrategy": "fill-available",
+      "positionStrategy": "uniform",
+      "positionWeights": [],
+      "phaseRules": []
+    },
+    "movement": {
+      "directions": [
+        "up",
+        "right",
+        "down",
+        "left"
+      ],
+      "distance": "slide",
+      "invalidMovePolicy": "ignore",
+      "wrap": "none"
+    },
+    "merge": {
+      "kind": "equal-sum",
+      "maxMergesPerTile": 1,
+      "chain": false,
+      "mappings": [],
+      "ruleOrder": []
+    },
+    "score": {
+      "method": "merged-value",
+      "multiplier": 1
+    },
+    "skills": {
+      "undo": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": false,
+        "spawnAfterUse": false,
+        "allowAfterLoss": true,
+        "params": {}
+      },
+      "delete": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "swap": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "upgrade": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "downgrade": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "shuffle": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "spawn": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "clear-line": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "rotate": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      }
+    },
+    "goals": {
+      "tileValue": null,
+      "scoreTarget": null,
+      "winPolicy": "any",
+      "continueAfterWin": true,
+      "roundLimit": null,
+      "lossWhenNoMoves": false,
+      "allowRescueSkills": true
+    },
+    "timer": {
+      "mode": "none",
+      "limitMs": null,
+      "pauseWhenHidden": true
+    },
+    "events": [],
+    "variables": {}
+  },
+  "definitionHash": "sha256:0da52223c5283ac208964ccd0ad8e51e7b21e68ac82cc51aeb285c20e4649837"
+}

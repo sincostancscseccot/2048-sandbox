@@ -1,0 +1,48 @@
+{
+  "name": "2048-sandbox",
+  "version": "0.9.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": { "node": ">=24.19.0 <25" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:performance": "vitest run --config vitest.performance.config.ts",
+    "test:release": "node --test tests/release/*.test.mjs",
+    "release:local": "pnpm build && node scripts/package-release.mjs",
+    "build:android": "tsc --noEmit && vite build --mode android --outDir .work/android-web",
+    "build:web": "tsc --noEmit && vite build --mode hosted --outDir .work/web",
+    "build:pages": "tsc --noEmit && vite build --mode pages --outDir .work/pages",
+    "build:single": "tsc --noEmit && vite build --mode standalone --outDir .work/single",
+    "release:web": "pnpm build:web && pnpm build:single && node scripts/package-web.mjs",
+    "release:cloud": "pnpm release:local && node scripts/package-cloud.mjs",
+    "release:android": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-android.ps1",
+    "validate:design": "node scripts/validate-design.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "dexie": "4.4.6",
+    "fflate": "0.8.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "fake-indexeddb": "6.2.5",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vite-plugin-pwa": "2.0.0",
+    "vitest": "5.0.4",
+    "workbox-build": "7.4.1",
+    "workbox-window": "7.4.1"
+  }
+}

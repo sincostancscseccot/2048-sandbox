@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "id": "preset-stages",
+  "version": 1,
+  "name": "阶段与奖励",
+  "requiredCapabilities": [
+    "core-v1",
+    "sandbox-v1",
+    "editing-v1",
+    "skills-v1",
+    "advanced-v1",
+    "events-v1"
+  ],
+  "definition": {
+    "mode": "custom",
+    "board": {
+      "rows": 3,
+      "cols": 5,
+      "initialLayout": [
+        {
+          "index": 0,
+          "value": "2"
+        },
+        {
+          "index": 1,
+          "value": "2"
+        }
+      ],
+      "cells": [],
+      "regions": [],
+      "resizeAnchor": "top-left",
+      "overflowPolicy": "cancel"
+    },
+    "numbers": {
+      "maxDigits": 256,
+      "allowedValues": null,
+      "sequence": "powers-of-two",
+      "customSequence": [],
+      "specialTypes": []
+    },
+    "spawn": {
+      "initialCount": 2,
+      "initialWeights": [
+        {
+          "value": "2",
+          "weight": 9
+        },
+        {
+          "value": "4",
+          "weight": 1
+        }
+      ],
+      "perActionCount": 1,
+      "weights": [
+        {
+          "value": "2",
+          "weight": 9
+        },
+        {
+          "value": "4",
+          "weight": 1
+        }
+      ],
+      "triggerOn": [
+        "move"
+      ],
+      "emptyStrategy": "fill-available",
+      "positionStrategy": "uniform",
+      "positionWeights": [],
+      "phaseRules": [
+        {
+          "id": "late-stage",
+          "priority": 1,
+          "condition": {
+            "kind": "compare",
+            "source": "round",
+            "reference": null,
+            "operator": "gte",
+            "value": "3"
+          },
+          "weights": [
+            {
+              "value": "4",
+              "weight": 1
+            }
+          ],
+          "count": 1
+        }
+      ]
+    },
+    "movement": {
+      "directions": [
+        "up",
+        "right",
+        "down",
+        "left"
+      ],
+      "distance": "slide",
+      "invalidMovePolicy": "ignore",
+      "wrap": "none"
+    },
+    "merge": {
+      "kind": "equal-sum",
+      "maxMergesPerTile": 1,
+      "chain": false,
+      "mappings": [],
+      "ruleOrder": []
+    },
+    "score": {
+      "method": "merged-value",
+      "multiplier": 1
+    },
+    "skills": {
+      "undo": {
+        "enabled": true,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": false,
+        "spawnAfterUse": false,
+        "allowAfterLoss": true,
+        "params": {}
+      },
+      "delete": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "swap": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "upgrade": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "downgrade": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "shuffle": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "spawn": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "clear-line": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      },
+      "rotate": {
+        "enabled": false,
+        "unlimited": false,
+        "initialCharges": 3,
+        "maxCharges": 3,
+        "cooldownTurns": 0,
+        "rechargeEveryTurns": null,
+        "rechargeAmount": 1,
+        "scoreCost": "0",
+        "advanceRound": true,
+        "spawnAfterUse": false,
+        "allowAfterLoss": false,
+        "params": {}
+      }
+    },
+    "goals": {
+      "tileValue": "2048",
+      "scoreTarget": null,
+      "winPolicy": "any",
+      "continueAfterWin": true,
+      "roundLimit": null,
+      "lossWhenNoMoves": true,
+      "allowRescueSkills": true
+    },
+    "timer": {
+      "mode": "none",
+      "limitMs": null,
+      "pauseWhenHidden": true
+    },
+    "events": [
+      {
+        "id": "merge-bonus",
+        "name": "合并奖励",
+        "trigger": "after-merge",
+        "condition": null,
+        "actions": [
+          {
+            "type": "add-score",
+            "value": "10"
+          },
+          {
+            "type": "add-variable",
+            "name": "bonuses",
+            "value": "1"
+          }
+        ],
+        "priority": 0,
+        "maxExecutions": 10,
+        "cooldownTurns": 0,
+        "allowReentry": false
+      }
+    ],
+    "variables": {
+      "bonuses": "0"
+    }
+  },
+  "definitionHash": "sha256:4d26d7206010a22050a8d10ddababb54b6a23cdd309ac200aebb3bafa584c735"
+}

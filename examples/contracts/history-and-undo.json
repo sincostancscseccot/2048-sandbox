@@ -1,0 +1,1491 @@
+{
+  "kind": "contract-example",
+  "schemaVersion": 1,
+  "description": "手工设计的状态与树关系样例。无回合生成；S2 与 S2-copy 共享完整状态，S3 随机流不同；U1/U2 恢复世界但保留并支付当前技能资源。不是引擎发行存档或引擎测试结果。",
+  "project": {
+    "id": "project-contract-example",
+    "name": "分支与撤销契约样例",
+    "rootNodeIds": [
+      "S0"
+    ],
+    "activeNodeId": "U1",
+    "revision": 6,
+    "preferences": {
+      "randomBranchPolicy": "reroll",
+      "snapshotEveryActions": 32,
+      "compression": "deflate",
+      "deduplicateSnapshots": true,
+      "exportIncludeArchived": true,
+      "theme": "system",
+      "motion": "system",
+      "tileDisplayDigits": 10
+    }
+  },
+  "rulesets": [
+    {
+      "schemaVersion": 1,
+      "id": "rules-contract-example",
+      "version": 1,
+      "name": "契约示例 无回合生成",
+      "requiredCapabilities": [
+        "core-v1",
+        "skills-v1"
+      ],
+      "definition": {
+        "mode": "custom",
+        "board": {
+          "rows": 4,
+          "cols": 4,
+          "initialLayout": [
+            {
+              "index": 0,
+              "value": "2"
+            },
+            {
+              "index": 1,
+              "value": "2"
+            },
+            {
+              "index": 2,
+              "value": "4"
+            }
+          ],
+          "cells": [],
+          "regions": [],
+          "resizeAnchor": "top-left",
+          "overflowPolicy": "cancel"
+        },
+        "numbers": {
+          "maxDigits": 256,
+          "allowedValues": null,
+          "sequence": "powers-of-two",
+          "customSequence": [],
+          "specialTypes": []
+        },
+        "spawn": {
+          "initialCount": 3,
+          "initialWeights": [
+            {
+              "value": "2",
+              "weight": 9
+            },
+            {
+              "value": "4",
+              "weight": 1
+            }
+          ],
+          "perActionCount": 0,
+          "weights": [
+            {
+              "value": "2",
+              "weight": 9
+            },
+            {
+              "value": "4",
+              "weight": 1
+            }
+          ],
+          "triggerOn": [
+            "move"
+          ],
+          "emptyStrategy": "fill-available",
+          "positionStrategy": "uniform",
+          "positionWeights": [],
+          "phaseRules": []
+        },
+        "movement": {
+          "directions": [
+            "up",
+            "right",
+            "down",
+            "left"
+          ],
+          "distance": "slide",
+          "invalidMovePolicy": "ignore",
+          "wrap": "none"
+        },
+        "merge": {
+          "kind": "equal-sum",
+          "maxMergesPerTile": 1,
+          "chain": false,
+          "mappings": [],
+          "ruleOrder": []
+        },
+        "score": {
+          "method": "merged-value",
+          "multiplier": 1
+        },
+        "skills": {
+          "undo": {
+            "enabled": true,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": false,
+            "spawnAfterUse": false,
+            "allowAfterLoss": true,
+            "params": {}
+          },
+          "delete": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "swap": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "upgrade": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "downgrade": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "shuffle": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "spawn": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "clear-line": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "rotate": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          }
+        },
+        "goals": {
+          "tileValue": "2048",
+          "scoreTarget": null,
+          "winPolicy": "any",
+          "continueAfterWin": true,
+          "roundLimit": null,
+          "lossWhenNoMoves": true,
+          "allowRescueSkills": true
+        },
+        "timer": {
+          "mode": "none",
+          "limitMs": null,
+          "pauseWhenHidden": true
+        },
+        "events": [],
+        "variables": {}
+      },
+      "definitionHash": "sha256:abc5b6cd493841f9a01590a6a6f525c344a5c880a6fa96e0a001ff92e5e1d7de"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "S0",
+      "matchId": "match-example",
+      "parentId": null,
+      "depth": 0,
+      "action": null,
+      "randomContext": null,
+      "stateHash": "sha256:5c5f5517833652fb87bcfad552e0b248f0b911bebd570e11398799bd8563a1fe",
+      "createdAt": "2026-10-14T00:00:00Z",
+      "operationId": null,
+      "undoTargetId": null,
+      "tags": [
+        "root"
+      ]
+    },
+    {
+      "id": "S1",
+      "matchId": "match-example",
+      "parentId": "S0",
+      "depth": 1,
+      "action": {
+        "type": "move",
+        "payload": {
+          "direction": "left"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "advance",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        }
+      },
+      "stateHash": "sha256:591849e73265ec8465b6331ad49aa38d2e1d74fa210492bbb17c2a79242ec94c",
+      "createdAt": "2026-10-14T00:00:01Z",
+      "operationId": "op-S1",
+      "undoTargetId": null,
+      "tags": [
+        "advance"
+      ]
+    },
+    {
+      "id": "S2",
+      "matchId": "match-example",
+      "parentId": "S1",
+      "depth": 2,
+      "action": {
+        "type": "move",
+        "payload": {
+          "direction": "left"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "advance",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        }
+      },
+      "stateHash": "sha256:0ab20c3d9640e872fe12a2264dc8b2df94fa0c7a8fa9d3bd201259320c021668",
+      "createdAt": "2026-10-14T00:00:02Z",
+      "operationId": "op-S2",
+      "undoTargetId": null,
+      "tags": [
+        "advance"
+      ]
+    },
+    {
+      "id": "S2-copy",
+      "matchId": "match-example",
+      "parentId": "S1",
+      "depth": 2,
+      "action": {
+        "type": "move",
+        "payload": {
+          "direction": "left"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "reproduce",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        }
+      },
+      "stateHash": "sha256:0ab20c3d9640e872fe12a2264dc8b2df94fa0c7a8fa9d3bd201259320c021668",
+      "createdAt": "2026-10-14T00:00:03Z",
+      "operationId": "op-S2-copy",
+      "undoTargetId": null,
+      "tags": [
+        "reproduce"
+      ]
+    },
+    {
+      "id": "S3",
+      "matchId": "match-example",
+      "parentId": "S1",
+      "depth": 2,
+      "action": {
+        "type": "move",
+        "payload": {
+          "direction": "left"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "reroll",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "2399542565799887233",
+          "increment": "111",
+          "drawCount": 0
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "2399542565799887233",
+          "increment": "111",
+          "drawCount": 0
+        }
+      },
+      "stateHash": "sha256:c610c551051dcda6264971d8bd9afc2d61ccfa0831eeac82503c204ec4c64354",
+      "createdAt": "2026-10-14T00:00:04Z",
+      "operationId": "op-S3",
+      "undoTargetId": null,
+      "tags": [
+        "reroll"
+      ]
+    },
+    {
+      "id": "U1",
+      "matchId": "match-example",
+      "parentId": "S2",
+      "depth": 3,
+      "action": {
+        "type": "skill",
+        "payload": {
+          "skillId": "undo",
+          "targetNodeId": "S1"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "advance",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        }
+      },
+      "stateHash": "sha256:f43d4d9ecf7d50c6a5a15a7fbc09e715f28c6157cd3d2897c81ac4abd7011084",
+      "createdAt": "2026-10-14T00:00:05Z",
+      "operationId": "op-U1",
+      "undoTargetId": "S1",
+      "tags": [
+        "skill:undo"
+      ]
+    },
+    {
+      "id": "U2",
+      "matchId": "match-example",
+      "parentId": "U1",
+      "depth": 4,
+      "action": {
+        "type": "skill",
+        "payload": {
+          "skillId": "undo",
+          "targetNodeId": "S0"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "advance",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        }
+      },
+      "stateHash": "sha256:8c76c1f5bea188dda0dcbfec895fdf72352844f99004e640128c428e8e07a652",
+      "createdAt": "2026-10-14T00:00:06Z",
+      "operationId": "op-U2",
+      "undoTargetId": "S0",
+      "tags": [
+        "skill:undo"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "hash": "sha256:5c5f5517833652fb87bcfad552e0b248f0b911bebd570e11398799bd8563a1fe",
+      "payload": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-contract-example",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": {
+                  "id": "t0",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": {
+                  "id": "t1",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": {
+                  "id": "t2",
+                  "value": "4",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "0",
+          "roundCount": 0,
+          "mergeCount": 0,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 0,
+          "chargedTurnCount": 0,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "undoStack": []
+      }
+    },
+    {
+      "hash": "sha256:591849e73265ec8465b6331ad49aa38d2e1d74fa210492bbb17c2a79242ec94c",
+      "payload": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-contract-example",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": {
+                  "id": "merge-a",
+                  "value": "4",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": {
+                  "id": "t2",
+                  "value": "4",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "4",
+          "roundCount": 1,
+          "mergeCount": 1,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 1,
+          "chargedTurnCount": 1,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "undoStack": [
+          "S0"
+        ]
+      }
+    },
+    {
+      "hash": "sha256:0ab20c3d9640e872fe12a2264dc8b2df94fa0c7a8fa9d3bd201259320c021668",
+      "payload": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-contract-example",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": {
+                  "id": "merge-b",
+                  "value": "8",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "12",
+          "roundCount": 2,
+          "mergeCount": 2,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 2,
+          "chargedTurnCount": 2,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "undoStack": [
+          "S0",
+          "S1"
+        ]
+      }
+    },
+    {
+      "hash": "sha256:c610c551051dcda6264971d8bd9afc2d61ccfa0831eeac82503c204ec4c64354",
+      "payload": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-contract-example",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": {
+                  "id": "merge-c",
+                  "value": "8",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "12",
+          "roundCount": 2,
+          "mergeCount": 2,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 2,
+          "chargedTurnCount": 2,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "2399542565799887233",
+          "increment": "111",
+          "drawCount": 0
+        },
+        "undoStack": [
+          "S0",
+          "S1"
+        ]
+      }
+    },
+    {
+      "hash": "sha256:f43d4d9ecf7d50c6a5a15a7fbc09e715f28c6157cd3d2897c81ac4abd7011084",
+      "payload": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-contract-example",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": {
+                  "id": "merge-a",
+                  "value": "4",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": {
+                  "id": "t2",
+                  "value": "4",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "4",
+          "roundCount": 1,
+          "mergeCount": 1,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 3,
+          "chargedTurnCount": 2,
+          "skills": {
+            "undo": {
+              "charges": 2,
+              "cooldownRemaining": 0,
+              "usedCount": 1,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "undoStack": [
+          "S0"
+        ]
+      }
+    },
+    {
+      "hash": "sha256:8c76c1f5bea188dda0dcbfec895fdf72352844f99004e640128c428e8e07a652",
+      "payload": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-contract-example",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": {
+                  "id": "t0",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": {
+                  "id": "t1",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": {
+                  "id": "t2",
+                  "value": "4",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "0",
+          "roundCount": 0,
+          "mergeCount": 0,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 4,
+          "chargedTurnCount": 2,
+          "skills": {
+            "undo": {
+              "charges": 1,
+              "cooldownRemaining": 0,
+              "usedCount": 2,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "1753877967969059832",
+          "increment": "109",
+          "drawCount": 0
+        },
+        "undoStack": []
+      }
+    }
+  ]
+}

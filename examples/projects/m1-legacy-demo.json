@@ -1,0 +1,849 @@
+{
+  "format": "2048-sandbox-m1-backup",
+  "schemaVersion": 1,
+  "exportedAt": "2026-10-14T00:00:00Z",
+  "projects": [
+    {
+      "id": "match-7c7f6dd9-9d42-46a1-be27-bffb454d7578",
+      "project": {
+        "id": "match-7c7f6dd9-9d42-46a1-be27-bffb454d7578",
+        "name": "经典对局 1",
+        "rootNodeIds": [
+          "node-e14c49ac-f118-4f65-8c64-a98f7a619099"
+        ],
+        "activeNodeId": "node-9536b792-a082-4498-98a5-d4f36121c633",
+        "revision": 2,
+        "preferences": {
+          "randomBranchPolicy": "reroll",
+          "snapshotEveryActions": 32,
+          "compression": "deflate",
+          "deduplicateSnapshots": true,
+          "exportIncludeArchived": true,
+          "theme": "system",
+          "motion": "system",
+          "tileDisplayDigits": 10
+        }
+      },
+      "updatedAt": "2026-10-14T05:55:44Z"
+    },
+    {
+      "id": "match-c5bed870-8572-4415-ba08-db8390b5f032",
+      "project": {
+        "id": "match-c5bed870-8572-4415-ba08-db8390b5f032",
+        "name": "经典对局 2",
+        "rootNodeIds": [
+          "node-82bce646-421a-43a5-912e-89d26526f314"
+        ],
+        "activeNodeId": "node-82bce646-421a-43a5-912e-89d26526f314",
+        "revision": 1,
+        "preferences": {
+          "randomBranchPolicy": "reroll",
+          "snapshotEveryActions": 32,
+          "compression": "deflate",
+          "deduplicateSnapshots": true,
+          "exportIncludeArchived": true,
+          "theme": "system",
+          "motion": "system",
+          "tileDisplayDigits": 10
+        }
+      },
+      "updatedAt": "2026-10-14T05:55:44Z"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "node-9536b792-a082-4498-98a5-d4f36121c633",
+      "matchId": "match-7c7f6dd9-9d42-46a1-be27-bffb454d7578",
+      "parentId": "node-e14c49ac-f118-4f65-8c64-a98f7a619099",
+      "depth": 1,
+      "action": {
+        "type": "move",
+        "payload": {
+          "direction": "left"
+        },
+        "elapsedMs": 0
+      },
+      "randomContext": {
+        "mode": "advance",
+        "before": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "17639907700945966675",
+          "increment": "17608682229393034631",
+          "drawCount": 4
+        },
+        "after": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "17338091439243366349",
+          "increment": "17608682229393034631",
+          "drawCount": 6
+        }
+      },
+      "stateHash": "sha256:5c12b6234ab86672db39bf954a20185e2d052d20a65fb1ac61d0d330896d8ef5",
+      "createdAt": "2026-10-14T05:55:44Z",
+      "operationId": "op-d723aef3-adc7-4df1-9230-4b619bf8747e",
+      "undoTargetId": null,
+      "tags": []
+    },
+    {
+      "id": "node-e14c49ac-f118-4f65-8c64-a98f7a619099",
+      "matchId": "match-7c7f6dd9-9d42-46a1-be27-bffb454d7578",
+      "parentId": null,
+      "depth": 0,
+      "action": null,
+      "randomContext": null,
+      "stateHash": "sha256:e5e86a6440fe75488d00180d6fccdde47ad00e6fd2e7fe1c00a36bbd79cdc620",
+      "createdAt": "2026-10-14T05:55:44Z",
+      "operationId": "op-8d0feea4-9841-4ec4-b595-0cec12b8b034",
+      "undoTargetId": null,
+      "tags": []
+    },
+    {
+      "id": "node-82bce646-421a-43a5-912e-89d26526f314",
+      "matchId": "match-c5bed870-8572-4415-ba08-db8390b5f032",
+      "parentId": null,
+      "depth": 0,
+      "action": null,
+      "randomContext": null,
+      "stateHash": "sha256:438d846973858625fb968b74d1ba8948ec2ffc3e64e67c411f1f5474d82b65b8",
+      "createdAt": "2026-10-14T05:55:44Z",
+      "operationId": "op-de4255fa-212c-41fc-90ad-31bc8f501ebf",
+      "undoTargetId": null,
+      "tags": []
+    }
+  ],
+  "states": [
+    {
+      "hash": "sha256:438d846973858625fb968b74d1ba8948ec2ffc3e64e67c411f1f5474d82b65b8",
+      "state": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-classic",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-root-5922189592720822269-534195425955349761-1-12",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-root-5922189592720822269-534195425955349761-0-14",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "0",
+          "roundCount": 0,
+          "mergeCount": 0,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 0,
+          "chargedTurnCount": 0,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "7617698412185331673",
+          "increment": "534195425955349761",
+          "drawCount": 4
+        },
+        "undoStack": []
+      }
+    },
+    {
+      "hash": "sha256:5c12b6234ab86672db39bf954a20185e2d052d20a65fb1ac61d0d330896d8ef5",
+      "state": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-classic",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-root-17642115882582296335-17608682229393034631-0-4",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-root-17642115882582296335-17608682229393034631-1-9",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-1-left-17639907700945966675-17608682229393034631-0-12",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "0",
+          "roundCount": 1,
+          "mergeCount": 0,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 1,
+          "chargedTurnCount": 1,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "17338091439243366349",
+          "increment": "17608682229393034631",
+          "drawCount": 6
+        },
+        "undoStack": [
+          "node-e14c49ac-f118-4f65-8c64-a98f7a619099"
+        ]
+      }
+    },
+    {
+      "hash": "sha256:e5e86a6440fe75488d00180d6fccdde47ad00e6fd2e7fe1c00a36bbd79cdc620",
+      "state": {
+        "schemaVersion": 1,
+        "ruleRef": {
+          "id": "rules-classic",
+          "version": 1
+        },
+        "world": {
+          "board": {
+            "rows": 4,
+            "cols": 4,
+            "cells": [
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-root-17642115882582296335-17608682229393034631-0-4",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": {
+                  "id": "t-s-root-17642115882582296335-17608682229393034631-1-9",
+                  "value": "2",
+                  "attributes": {}
+                }
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              },
+              {
+                "tile": null
+              }
+            ]
+          },
+          "score": "0",
+          "roundCount": 0,
+          "mergeCount": 0,
+          "goals": {
+            "achieved": [],
+            "firstWinLogicalMs": null
+          },
+          "outcome": {
+            "status": "playing",
+            "canContinue": true,
+            "reason": null
+          },
+          "events": {
+            "queue": [],
+            "counters": {},
+            "variables": {}
+          },
+          "clock": {
+            "mode": "none",
+            "logicalElapsedMs": 0,
+            "remainingMs": null,
+            "statusAtCommit": "paused"
+          }
+        },
+        "ledger": {
+          "effectiveActionCount": 0,
+          "chargedTurnCount": 0,
+          "skills": {
+            "undo": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "delete": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "swap": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "upgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "downgrade": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "shuffle": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "spawn": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "clear-line": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            },
+            "rotate": {
+              "charges": 3,
+              "cooldownRemaining": 0,
+              "usedCount": 0,
+              "rechargeProgress": 0
+            }
+          }
+        },
+        "rng": {
+          "algorithm": "pcg32-xsh-rr-v1",
+          "state": "17639907700945966675",
+          "increment": "17608682229393034631",
+          "drawCount": 4
+        },
+        "undoStack": []
+      }
+    }
+  ],
+  "checkpoints": [],
+  "rules": [
+    {
+      "schemaVersion": 1,
+      "id": "rules-classic",
+      "version": 1,
+      "name": "经典 2048",
+      "requiredCapabilities": [
+        "core-v1"
+      ],
+      "definition": {
+        "mode": "normal",
+        "board": {
+          "rows": 4,
+          "cols": 4,
+          "initialLayout": [],
+          "cells": [],
+          "regions": [],
+          "resizeAnchor": "top-left",
+          "overflowPolicy": "cancel"
+        },
+        "numbers": {
+          "maxDigits": 256,
+          "allowedValues": null,
+          "sequence": "powers-of-two",
+          "customSequence": [],
+          "specialTypes": []
+        },
+        "spawn": {
+          "initialCount": 2,
+          "initialWeights": [
+            {
+              "value": "2",
+              "weight": 9
+            },
+            {
+              "value": "4",
+              "weight": 1
+            }
+          ],
+          "perActionCount": 1,
+          "weights": [
+            {
+              "value": "2",
+              "weight": 9
+            },
+            {
+              "value": "4",
+              "weight": 1
+            }
+          ],
+          "triggerOn": [
+            "move"
+          ],
+          "emptyStrategy": "fill-available",
+          "positionStrategy": "uniform",
+          "positionWeights": [],
+          "phaseRules": []
+        },
+        "movement": {
+          "directions": [
+            "up",
+            "right",
+            "down",
+            "left"
+          ],
+          "distance": "slide",
+          "invalidMovePolicy": "ignore",
+          "wrap": "none"
+        },
+        "merge": {
+          "kind": "equal-sum",
+          "maxMergesPerTile": 1,
+          "chain": false,
+          "mappings": [],
+          "ruleOrder": []
+        },
+        "score": {
+          "method": "merged-value",
+          "multiplier": 1
+        },
+        "skills": {
+          "undo": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": false,
+            "spawnAfterUse": false,
+            "allowAfterLoss": true,
+            "params": {}
+          },
+          "delete": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "swap": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "upgrade": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "downgrade": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "shuffle": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "spawn": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "clear-line": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          },
+          "rotate": {
+            "enabled": false,
+            "unlimited": false,
+            "initialCharges": 3,
+            "maxCharges": 3,
+            "cooldownTurns": 0,
+            "rechargeEveryTurns": null,
+            "rechargeAmount": 1,
+            "scoreCost": "0",
+            "advanceRound": true,
+            "spawnAfterUse": false,
+            "allowAfterLoss": false,
+            "params": {}
+          }
+        },
+        "goals": {
+          "tileValue": "2048",
+          "scoreTarget": null,
+          "winPolicy": "any",
+          "continueAfterWin": true,
+          "roundLimit": null,
+          "lossWhenNoMoves": true,
+          "allowRescueSkills": true
+        },
+        "timer": {
+          "mode": "none",
+          "limitMs": null,
+          "pauseWhenHidden": true
+        },
+        "events": [],
+        "variables": {}
+      },
+      "definitionHash": "sha256:f49d4412de4e6149688d6bac2c2ee2656fb9039470c074d2e8996833609ae3db"
+    }
+  ],
+  "settings": [
+    {
+      "key": "lastProjectId",
+      "value": "match-c5bed870-8572-4415-ba08-db8390b5f032"
+    }
+  ]
+}

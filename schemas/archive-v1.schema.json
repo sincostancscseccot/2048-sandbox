@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:2048-sandbox:archives:v1",
+  "title": "2048 Sandbox portable archive v1",
+  "$defs": {
+    "Id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$" },
+    "Hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "Time": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$" },
+    "Path": { "type": "string", "minLength": 1, "maxLength": 240, "pattern": "^[A-Za-z0-9][A-Za-z0-9_./-]*$" },
+    "UInt": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+    "Checkpoint": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "projectId", "nodeId", "name", "createdAt"],
+      "properties": { "id": { "$ref": "#/$defs/Id" }, "projectId": { "$ref": "#/$defs/Id" }, "nodeId": { "$ref": "#/$defs/Id" }, "name": { "type": "string", "maxLength": 4096 }, "createdAt": { "$ref": "#/$defs/Time" } }
+    },
+    "Origin": {
+      "type": "object", "additionalProperties": false, "required": ["batchId", "sourceProjectId", "sourceHash", "importedAt", "sourceFormat"],
+      "properties": { "batchId": { "$ref": "#/$defs/Id" }, "sourceProjectId": { "$ref": "#/$defs/Id" }, "sourceHash": { "$ref": "#/$defs/Hash" }, "importedAt": { "$ref": "#/$defs/Time" }, "sourceFormat": { "type": "string", "maxLength": 100 } }
+    },
+    "ProjectRecord": {
+      "type": "object", "additionalProperties": false, "required": ["id", "project", "updatedAt"],
+      "properties": { "id": { "$ref": "#/$defs/Id" }, "project": { "$ref": "urn:2048-sandbox:contracts:v1#/$defs/Project" }, "updatedAt": { "$ref": "#/$defs/Time" }, "archivedRootIds": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/Id" } }, "origin": { "$ref": "#/$defs/Origin" } }
+    },
+    "Settings": { "type": "array", "maxItems": 10, "items": { "type": "object", "additionalProperties": false, "required": ["key", "value"], "properties": { "key": { "const": "lastProjectId" }, "value": { "$ref": "#/$defs/Id" } } } },
+    "LibrarySnapshot": {
+      "type": "object", "additionalProperties": false, "required": ["projects", "nodes", "states", "rules", "checkpoints", "settings"],
+      "properties": {
+        "projects": { "type": "array", "maxItems": 1000, "items": { "$ref": "#/$defs/ProjectRecord" } },
+        "nodes": { "type": "array", "maxItems": 100000, "items": { "$ref": "urn:2048-sandbox:contracts:v1#/$defs/HistoryNode" } },
+        "states": { "type": "array", "maxItems": 100000, "items": { "type": "object", "additionalProperties": false, "required": ["hash", "state"], "properties": { "hash": { "$ref": "#/$defs/Hash" }, "state": { "$ref": "urn:2048-sandbox:contracts:v1#/$defs/GameState" } } } },
+        "rules": { "type": "array", "maxItems": 1000, "items": { "$ref": "urn:2048-sandbox:contracts:v1#/$defs/RuleSetVersion" } },
+        "checkpoints": { "type": "array", "maxItems": 100000, "items": { "$ref": "#/$defs/Checkpoint" } },
+        "settings": { "$ref": "#/$defs/Settings" }
+      }
+    },
+    "Manifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["format", "formatVersion", "exportKind", "exportedAt", "requiredCapabilities", "entryCount", "nodeCount", "stateCount", "entries", "projects", "states", "settings"],
+      "properties": {
+        "format": { "const": "2048-sandbox" }, "formatVersion": { "const": 1 },
+        "exportKind": { "enum": ["state", "branch", "project", "library"] }, "exportedAt": { "$ref": "#/$defs/Time" },
+        "requiredCapabilities": { "type": "array", "maxItems": 100, "uniqueItems": true, "items": { "type": "string", "maxLength": 128 } },
+        "entryCount": { "$ref": "#/$defs/UInt" }, "nodeCount": { "$ref": "#/$defs/UInt" }, "stateCount": { "$ref": "#/$defs/UInt" },
+        "entries": { "type": "array", "maxItems": 50000, "items": { "type": "object", "additionalProperties": false, "required": ["path", "kind", "bytes", "hash"], "properties": { "path": { "$ref": "#/$defs/Path" }, "kind": { "enum": ["project", "rule", "node-index", "node-part", "state", "delta"] }, "bytes": { "$ref": "#/$defs/UInt" }, "hash": { "$ref": "#/$defs/Hash" } } } },
+        "projects": { "type": "array", "maxItems": 1000, "items": { "type": "object", "additionalProperties": false, "required": ["sourceProjectId", "documentPath", "indexPath", "selectedNodeIds", "rootNodeIds"], "properties": { "sourceProjectId": { "$ref": "#/$defs/Id" }, "documentPath": { "$ref": "#/$defs/Path" }, "indexPath": { "$ref": "#/$defs/Path" }, "selectedNodeIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/Id" } }, "rootNodeIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/Id" } } } } },
+        "states": { "type": "array", "maxItems": 100000, "items": { "type": "object", "additionalProperties": false, "required": ["hash", "path", "encoding", "baseHash"], "properties": { "hash": { "$ref": "#/$defs/Hash" }, "path": { "$ref": "#/$defs/Path" }, "encoding": { "enum": ["full", "delta"] }, "baseHash": { "anyOf": [{ "$ref": "#/$defs/Hash" }, { "type": "null" }] } } } },
+        "settings": { "$ref": "#/$defs/Settings" }
+      }
+    },
+    "ProjectPayload": { "type": "object", "additionalProperties": false, "required": ["record", "checkpoints"], "properties": { "record": { "$ref": "#/$defs/ProjectRecord" }, "checkpoints": { "type": "array", "maxItems": 100000, "items": { "$ref": "#/$defs/Checkpoint" } } } },
+    "NodeIndex": { "type": "object", "additionalProperties": false, "required": ["matchId", "count", "parts"], "properties": { "matchId": { "$ref": "#/$defs/Id" }, "count": { "$ref": "#/$defs/UInt" }, "parts": { "type": "array", "maxItems": 10000, "items": { "type": "object", "additionalProperties": false, "required": ["path", "count"], "properties": { "path": { "$ref": "#/$defs/Path" }, "count": { "$ref": "#/$defs/UInt" } } } } } },
+    "Delta": {
+      "type": "object", "additionalProperties": false, "required": ["deltaVersion", "baseStateHash", "resultStateHash", "patches"],
+      "properties": { "deltaVersion": { "const": 1 }, "baseStateHash": { "$ref": "#/$defs/Hash" }, "resultStateHash": { "$ref": "#/$defs/Hash" }, "patches": { "type": "array", "maxItems": 4096, "items": { "type": "object", "additionalProperties": false, "required": ["op", "path", "value"], "properties": { "op": { "enum": ["replace", "add"] }, "path": { "type": "array", "minItems": 1, "maxItems": 32, "items": { "type": "string", "minLength": 1, "maxLength": 128 } }, "value": {} } } } }
+    }
+  }
+}
