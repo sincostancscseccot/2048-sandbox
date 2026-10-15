@@ -1,0 +1,1 @@
+{"name":"2048 Sandbox","short_name":"2048 Sandbox","description":"每一步都有记录的离线 2048。","start_url":"/2048-sandbox/","display":"standalone","background_color":"#f5f5ef","theme_color":"#25644a","lang":"zh-CN","scope":"/2048-sandbox/","icons":[{"src":"/2048-sandbox/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
