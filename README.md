@@ -4,11 +4,11 @@
 
 **当前版本：v0.9.0，跨平台发布。** 提供安卓离线安装包、本地程序 ZIP、静态网页 ZIP 和单文件 HTML。源码、设计材料、测试与构建入口均在本仓库中；程序包不包含个人对局或签名私钥。
 
-- [在线试玩 · GitHub Pages](https://sincostancscseccot.github.io/2048-sandbox/)
+- [在线试玩 · 云枢](https://2048-sandbox.yijianyu.hub2.cloud/) / [备用网页版 · GitHub Pages](https://sincostancscseccot.github.io/2048-sandbox/)
 - [安卓 APK](https://github.com/sincostancscseccot/2048-sandbox/releases/download/v0.9.0/2048-sandbox-v0.9.0-android.apk) / [全部下载与历史程序包](https://github.com/sincostancscseccot/2048-sandbox/releases/tag/v0.9.0)
 - [安卓安装与构建说明](android/README.md) / [网页发布说明](docs/release/网页发布说明.md) / [跨平台发布验收](docs/planning/跨平台发布_验收记录.md)
 
-云枢平台已接收部署包，目前等待平台运行环境恢复后上线。GitHub Pages 提供独立的备用网页版。不同网页地址、浏览器和安卓应用使用各自的本地存储，可通过 `.2048backup` 完整备份迁移对局。
+云枢与 GitHub Pages 均已上线，并通过真实地址的移动、保存恢复、备份导出/导入及断网重开验证。不同网页地址、浏览器和安卓应用使用各自的本地存储，可通过 `.2048backup` 完整备份迁移对局。
 
 此前的[键盘修复](docs/planning/键盘操作修复_验收记录.md)、[显示与对局管理](docs/planning/显示修复与对局管理_验收记录.md)、[动效与音效](docs/planning/动效与音效_验收记录.md)、[M6 验收](docs/planning/M6_验收记录.md)与[性能记录](docs/planning/M6_性能记录.md)继续保留。
 

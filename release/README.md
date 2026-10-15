@@ -1,6 +1,6 @@
 # 程序下载
 
-[全部发布文件](https://github.com/sincostancscseccot/2048-sandbox/releases/tag/v0.9.0) · [备用在线试玩](https://sincostancscseccot.github.io/2048-sandbox/) · [源码](https://github.com/sincostancscseccot/2048-sandbox)
+[全部发布文件](https://github.com/sincostancscseccot/2048-sandbox/releases/tag/v0.9.0) · [云枢在线试玩](https://2048-sandbox.yijianyu.hub2.cloud/) · [备用在线试玩](https://sincostancscseccot.github.io/2048-sandbox/) · [源码](https://github.com/sincostancscseccot/2048-sandbox)
 
 | 程序 | 下载 | 摘要 |
 |---|---|---|
@@ -14,7 +14,7 @@
 
 [本地说明](../docs/release/本地版使用说明.md) · [安卓说明](../android/README.md) · [网页发布说明](../docs/release/网页发布说明.md)
 
-云枢已接收部署包；当前部署受平台运行环境限制，尚未上线。请先使用备用在线版。
+云枢与备用在线版均已上线；每个地址使用独立的浏览器存储，通过完整备份迁移对局。
 
 ## 历史程序包
 
